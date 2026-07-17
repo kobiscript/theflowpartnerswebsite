@@ -3,179 +3,727 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="An interactive healthcare compliance brief on the meeting-layer risk created by unauthorized AI notetakers.">
-  <meta name="theme-color" content="#050505">
-  <meta property="og:title" content="Healthcare Compliance Brief | NoteTakerGuard">
-  <meta property="og:description" content="Explore the meeting-layer risks unauthorized AI notetakers can create for healthcare organizations.">
-  <meta property="og:type" content="article">
-  <meta property="og:image" content="https://notetakerguard.com/images/socialsharingimage-v2.png">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:image" content="https://notetakerguard.com/images/socialsharingimage-v2.png">
+  <meta name="description" content="Healthcare compliance brief on regulatory exposure from unauthorized AI notetaker tools and how NoteTakerGuard helps close the gap.">
   <title>Healthcare Compliance Brief | NoteTakerGuard</title>
   <link rel="icon" type="image/png" sizes="32x32" href="images/favicon.png">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="report-deck.css">
+  <style>
+    :root {
+      --black: #050505;
+      --coal: #111111;
+      --panel: #161616;
+      --white: #ffffff;
+      --muted: #b9bec8;
+      --line: #2d2d2d;
+      --blue: #00a7e1;
+      --deep-blue: #075ea8;
+      --ice: #eef8fc;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      color: var(--white);
+      background: var(--black);
+      line-height: 1.5;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    button {
+      font: inherit;
+    }
+
+    .container {
+      width: min(1160px, calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+      background: rgba(5, 5, 5, 0.94);
+      backdrop-filter: blur(18px);
+    }
+
+    .nav {
+      display: flex;
+      min-height: 74px;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 900;
+      line-height: 1.05;
+    }
+
+    .brand img {
+      width: 40px;
+      height: 40px;
+      object-fit: contain;
+    }
+
+    .brand small {
+      display: block;
+      margin-top: 3px;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .button,
+    .deck-button {
+      display: inline-flex;
+      min-height: 48px;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 13px 19px;
+      border: 1px solid transparent;
+      border-radius: 0;
+      background: transparent;
+      color: inherit;
+      cursor: pointer;
+      font-size: 15px;
+      font-weight: 900;
+      line-height: 1.15;
+      text-align: center;
+      transition: background 180ms ease, color 180ms ease, transform 180ms ease, border-color 180ms ease;
+    }
+
+    .button:hover,
+    .deck-button:hover {
+      transform: translateY(-1px);
+    }
+
+    .button.primary,
+    .deck-button.primary {
+      background: var(--blue);
+      color: #00131d;
+    }
+
+    .button.primary:hover,
+    .deck-button.primary:hover {
+      background: #52d2ff;
+    }
+
+    .button.secondary,
+    .deck-button.secondary {
+      border-color: rgba(255, 255, 255, 0.42);
+      color: var(--white);
+    }
+
+    .button.secondary:hover,
+    .deck-button.secondary:hover {
+      border-color: var(--blue);
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    .deck-shell {
+      min-height: calc(100vh - 74px);
+      padding: 28px 0 42px;
+      background:
+        radial-gradient(circle at 88% 16%, rgba(0, 167, 225, 0.24), transparent 30%),
+        linear-gradient(135deg, rgba(9, 18, 25, 0.98) 0%, rgba(5, 5, 5, 0.96) 50%, rgba(0, 0, 0, 1) 100%);
+    }
+
+    .deck-top {
+      display: grid;
+      gap: 18px;
+      align-items: end;
+      margin-bottom: 22px;
+    }
+
+    .eyebrow {
+      margin: 0 0 12px;
+      color: var(--blue);
+      font-size: 13px;
+      font-weight: 900;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+    }
+
+    h1,
+    h2,
+    h3,
+    p {
+      margin-top: 0;
+    }
+
+    h1 {
+      max-width: 850px;
+      margin-bottom: 0;
+      font-size: clamp(38px, 7vw, 72px);
+      line-height: 0.94;
+      letter-spacing: 0;
+    }
+
+    .deck-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      color: #00131d;
+      font-size: 12px;
+      font-weight: 900;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .deck-meta span {
+      padding: 8px 10px;
+      border: 1px solid rgba(0, 167, 225, 0.75);
+      background: rgba(0, 167, 225, 0.95);
+    }
+
+    .deck-meta span + span {
+      border-color: rgba(255, 255, 255, 0.34);
+      background: rgba(255, 255, 255, 0.92);
+      color: #11243a;
+    }
+
+    .deck-frame {
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      background: #090f15;
+      box-shadow: 0 22px 80px rgba(0, 0, 0, 0.38);
+    }
+
+    .slides {
+      position: relative;
+      overflow: hidden;
+      min-height: min(680px, calc(100vh - 236px));
+    }
+
+    .slide {
+      display: none;
+      min-height: min(680px, calc(100vh - 236px));
+      grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
+      background: #f8f5f4;
+      color: #1c1d21;
+    }
+
+    .slide.active {
+      display: grid;
+    }
+
+    .slide-visual {
+      display: flex;
+      min-height: 100%;
+      align-items: center;
+      justify-content: center;
+      padding: 42px;
+      background: #f0e8e6;
+    }
+
+    .slide-visual.dark {
+      background: #081018;
+    }
+
+    .slide-visual img {
+      width: 100%;
+      max-height: 520px;
+      object-fit: contain;
+    }
+
+    .slide-content {
+      display: flex;
+      min-height: 100%;
+      flex-direction: column;
+      justify-content: center;
+      padding: clamp(34px, 6vw, 74px);
+    }
+
+    .slide-number {
+      margin-bottom: 26px;
+      color: var(--deep-blue);
+      font-size: 13px;
+      font-weight: 950;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .slide h2 {
+      max-width: 760px;
+      margin-bottom: 20px;
+      font-size: clamp(34px, 5vw, 62px);
+      line-height: 0.98;
+      letter-spacing: 0;
+    }
+
+    .slide .lead {
+      max-width: 720px;
+      margin-bottom: 26px;
+      color: #3b4250;
+      font-size: clamp(18px, 2.2vw, 22px);
+      font-weight: 750;
+    }
+
+    .tag-row,
+    .mini-grid,
+    .risk-list,
+    .control-grid {
+      display: grid;
+      gap: 12px;
+    }
+
+    .tag-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .tag-row span {
+      padding: 8px 10px;
+      border: 1px solid #1a3d9a;
+      color: #132b78;
+      font-size: 13px;
+      font-weight: 900;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .mini-grid,
+    .control-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .mini-card,
+    .risk-item,
+    .control-card {
+      padding: 18px;
+      border: 1px solid #dbe3ee;
+      background: #ffffff;
+    }
+
+    .mini-card strong,
+    .risk-item strong,
+    .control-card strong {
+      display: block;
+      margin-bottom: 8px;
+      color: var(--deep-blue);
+      font-size: 17px;
+      font-weight: 950;
+    }
+
+    .mini-card p,
+    .risk-item p,
+    .control-card p {
+      margin: 0;
+      color: #435062;
+      font-size: 16px;
+      font-weight: 700;
+    }
+
+    .risk-list {
+      margin-top: 2px;
+    }
+
+    .risk-item {
+      display: grid;
+      grid-template-columns: 42px 1fr;
+      align-items: start;
+      gap: 14px;
+    }
+
+    .risk-item span {
+      display: grid;
+      width: 42px;
+      height: 42px;
+      place-items: center;
+      background: var(--deep-blue);
+      color: #fff;
+      font-size: 13px;
+      font-weight: 950;
+    }
+
+    .quote-panel {
+      padding: 28px;
+      border-left: 5px solid var(--blue);
+      background: var(--ice);
+      color: #17364b;
+      font-size: clamp(20px, 2.6vw, 28px);
+      font-weight: 950;
+      line-height: 1.16;
+    }
+
+    .deck-controls {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      gap: 16px;
+      align-items: center;
+      padding: 18px;
+      border-top: 1px solid rgba(255, 255, 255, 0.12);
+      background: #0d0d0d;
+    }
+
+    .deck-controls .next {
+      justify-self: end;
+    }
+
+    .slide-count {
+      color: var(--muted);
+      font-size: 14px;
+      font-weight: 850;
+    }
+
+    .dots {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      justify-content: center;
+      padding: 16px 0 0;
+    }
+
+    .dot {
+      width: 34px;
+      height: 4px;
+      border: 0;
+      background: rgba(255, 255, 255, 0.24);
+      cursor: pointer;
+    }
+
+    .dot.active {
+      background: var(--blue);
+    }
+
+    .summary {
+      padding: 54px 0;
+      background: var(--white);
+      color: #111827;
+    }
+
+    .summary-grid {
+      display: grid;
+      gap: 26px;
+      align-items: center;
+    }
+
+    .summary h2 {
+      margin-bottom: 14px;
+      font-size: clamp(30px, 5vw, 52px);
+      line-height: 1;
+    }
+
+    .summary p {
+      max-width: 720px;
+      color: #334155;
+      font-size: 18px;
+      font-weight: 700;
+    }
+
+    .footer {
+      padding: 34px 0;
+      border-top: 1px solid rgba(255, 255, 255, 0.12);
+      background: #050505;
+      color: var(--muted);
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    @media (min-width: 760px) {
+      .deck-top,
+      .summary-grid {
+        grid-template-columns: 1fr auto;
+      }
+    }
+
+    @media (max-width: 860px) {
+      .slide,
+      .slide.active {
+        grid-template-columns: 1fr;
+      }
+
+      .slide-visual {
+        min-height: 260px;
+        padding: 28px;
+      }
+
+      .slide-content,
+      .slides,
+      .slide {
+        min-height: auto;
+      }
+    }
+
+    @media (max-width: 620px) {
+      .nav {
+        align-items: flex-start;
+        flex-direction: column;
+        padding: 16px 0;
+      }
+
+      .brand small {
+        display: none;
+      }
+
+      .mini-grid,
+      .control-grid,
+      .deck-controls {
+        grid-template-columns: 1fr;
+      }
+
+      .deck-controls .next {
+        justify-self: stretch;
+      }
+
+      .deck-button,
+      .button {
+        width: 100%;
+      }
+    }
+  </style>
 </head>
 <body>
-  <a class="skip-link" href="#report">Skip to report</a>
-
-  <header class="report-header">
-    <div class="shell report-nav">
-      <a class="report-brand" href="index.html" aria-label="The Flow Partners home">
-        <img src="images/The Flow Partners Logo.png" alt="" width="32" height="38">
-        <span><strong>The Flow Partners</strong><small>NoteTakerGuard</small></span>
+  <header class="site-header">
+    <div class="container nav">
+      <a class="brand" href="index.html" aria-label="NoteTakerGuard home">
+        <img src="images/The Flow Partners Logo.png" alt="" width="40" height="40">
+        <span>NoteTakerGuard <small>by The Flow Partners</small></span>
       </a>
-      <a class="back-link" href="index.html#research"><span aria-hidden="true">←</span> Back to findings</a>
+      <a class="button secondary" href="product.html">Back to Product</a>
     </div>
   </header>
 
-  <main id="report">
-    <section class="report-hero" aria-labelledby="report-title">
-      <div class="shell report-heading">
-        <div>
-          <p class="eyebrow">Research report · Healthcare</p>
-          <h1 id="report-title">The healthcare compliance brief.</h1>
+  <main>
+    <section class="deck-shell" aria-labelledby="deck-title">
+      <div class="container">
+        <div class="deck-top">
+          <div>
+            <p class="eyebrow">Healthcare Compliance Brief</p>
+            <h1 id="deck-title">Regulatory exposure from unauthorized AI meeting tools.</h1>
+          </div>
+          <div class="deck-meta" aria-label="Brief topics">
+            <span>Regulatory Risk</span>
+            <span>HIPAA / CMS / ONC / State Law</span>
+          </div>
         </div>
-        <p class="report-summary">A six-part view of where unauthorized AI meeting tools can create unmanaged health-data risk—and where governance teams can intervene.</p>
-      </div>
-    </section>
 
-    <section class="deck-section" aria-label="Interactive healthcare compliance report">
-      <div class="shell">
-        <div class="report-deck" data-report-deck tabindex="0" role="region" aria-roledescription="slideshow" aria-label="Healthcare compliance brief">
-          <div class="report-slides">
-            <article class="report-slide is-active" data-slide aria-hidden="false">
-              <div class="slide-visual dark contain">
-                <img src="assets/slide-23-healthcare-deep-dive.png" alt="Healthcare team reviewing clinical data together">
+        <section class="deck-frame" aria-label="Healthcare compliance slideshow">
+          <div class="slides">
+            <article class="slide active" data-slide>
+              <div class="slide-visual">
+                <img src="assets/slide-23-healthcare-deep-dive.png" alt="Healthcare team reviewing clinical data in a meeting">
               </div>
               <div class="slide-content">
-                <span class="slide-kicker">01 / The brief</span>
-                <h2>Healthcare conversations are a data boundary.</h2>
-                <p class="slide-lead">AI notetakers can create a new path for protected or sensitive information to leave approved systems—often before privacy, security, or compliance teams know the tool is present.</p>
-                <div class="tag-row" aria-label="Topics covered">
-                  <span>HIPAA</span><span>CMS</span><span>ONC</span><span>State privacy</span><span>Consent</span>
+                <span class="slide-number">Slide 01 / Overview</span>
+                <h2>Healthcare Compliance Brief</h2>
+                <p class="lead">A critical overview of regulatory exposure facing healthcare organizations using unauthorized AI tools - and how to close the compliance gap before it becomes a liability.</p>
+                <div class="tag-row">
+                  <span>Regulatory risk</span>
+                  <span>HIPAA</span>
+                  <span>CMS</span>
+                  <span>ONC</span>
+                  <span>State law</span>
                 </div>
               </div>
             </article>
 
-            <article class="report-slide" data-slide aria-hidden="true">
-              <div class="slide-content dark">
-                <span class="slide-kicker">02 / Core risk</span>
-                <h2>An unmanaged PHI channel can start with one invite.</h2>
-                <p class="slide-lead">A meeting bot may record, transcribe, summarize, or retain a discussion in a third-party environment. That can separate the data from the organization’s normal access, retention, vendor, and incident-response controls.</p>
-                <div class="quote-panel">The governance question is bigger than note taking: who collects the data, where it goes, how long it remains, and which safeguards follow it?</div>
+            <article class="slide" data-slide>
+              <div class="slide-content">
+                <span class="slide-number">Slide 02 / Core Risk</span>
+                <h2>AI notetakers can create an unmanaged PHI channel.</h2>
+                <p class="lead">When a meeting bot records, transcribes, summarizes, or stores care discussions outside approved systems, the organization can lose control over where PHI goes, who can access it, and whether required safeguards apply.</p>
+                <div class="quote-panel">The issue is not just note taking. It is unauthorized collection, storage, access, and vendor processing of regulated health information.</div>
               </div>
               <div class="slide-visual dark">
-                <img src="assets/slide-7-healthcare.png" alt="Healthcare technology workstation with clinical data displays">
+                <img src="assets/slide-7-healthcare.png" alt="Healthcare technology workstation with clinical dashboard">
               </div>
             </article>
 
-            <article class="report-slide" data-slide aria-hidden="true">
+            <article class="slide" data-slide>
               <div class="slide-visual">
-                <img src="images/healthcare.jpeg" alt="Healthcare professional working with connected clinical technology">
+                <img src="images/healthcare.jpeg" alt="Healthcare professional using connected clinical technology">
               </div>
               <div class="slide-content">
-                <span class="slide-kicker">03 / Exposure map</span>
-                <h2>One bot can touch several obligations.</h2>
+                <span class="slide-number">Slide 03 / Where Exposure Shows Up</span>
+                <h2>One bot can touch multiple compliance obligations.</h2>
                 <div class="mini-grid">
-                  <div class="mini-card"><strong>Privacy</strong><p>Patient information may be captured beyond an approved purpose or without the right authorization path.</p></div>
-                  <div class="mini-card"><strong>Security</strong><p>Unreviewed tools can sit outside risk analysis, access controls, logging, and vendor safeguards.</p></div>
-                  <div class="mini-card"><strong>Incident response</strong><p>Unknown storage and downstream access complicate containment, investigation, and notification decisions.</p></div>
-                  <div class="mini-card"><strong>Third-party governance</strong><p>The vendor relationship may lack the agreements and evidence required for regulated data handling.</p></div>
+                  <div class="mini-card">
+                    <strong>HIPAA Privacy Rule</strong>
+                    <p>Patient information discussed in care, claims, HR, or operations meetings may be captured without proper authorization or minimum-necessary controls.</p>
+                  </div>
+                  <div class="mini-card">
+                    <strong>HIPAA Security Rule</strong>
+                    <p>Unapproved tools can bypass risk analysis, access controls, audit controls, encryption expectations, and vendor safeguards.</p>
+                  </div>
+                  <div class="mini-card">
+                    <strong>Breach Notification</strong>
+                    <p>Unknown storage and downstream access can make it difficult to assess, contain, and document an impermissible disclosure.</p>
+                  </div>
+                  <div class="mini-card">
+                    <strong>Business Associate Risk</strong>
+                    <p>AI vendors may process PHI without a business associate agreement or security review.</p>
+                  </div>
                 </div>
               </div>
             </article>
 
-            <article class="report-slide" data-slide aria-hidden="true">
+            <article class="slide" data-slide>
               <div class="slide-content">
-                <span class="slide-kicker">04 / Where it appears</span>
-                <h2>The meeting layer spans the organization.</h2>
+                <span class="slide-number">Slide 04 / Operational Risk</span>
+                <h2>The meeting layer is easy to miss.</h2>
                 <div class="risk-list">
-                  <div class="risk-item"><span>01</span><div><strong>Care delivery</strong><p>Case reviews, discharge planning, utilization management, and patient escalations can all include regulated information.</p></div></div>
-                  <div class="risk-item"><span>02</span><div><strong>Revenue cycle and payer operations</strong><p>Claims, eligibility, authorization, and appeals conversations can combine health and financial data.</p></div></div>
-                  <div class="risk-item"><span>03</span><div><strong>Executive, legal, and quality teams</strong><p>Incident response, investigations, M&amp;A, and strategy discussions may contain privileged or highly sensitive context.</p></div></div>
+                  <div class="risk-item">
+                    <span>01</span>
+                    <div><strong>Clinical and care-team meetings</strong><p>Case reviews, discharge planning, behavioral health, utilization management, and patient escalation calls can include PHI.</p></div>
+                  </div>
+                  <div class="risk-item">
+                    <span>02</span>
+                    <div><strong>Revenue cycle and payer conversations</strong><p>Claims, eligibility, authorization, and appeals meetings may include member data and sensitive financial details.</p></div>
+                  </div>
+                  <div class="risk-item">
+                    <span>03</span>
+                    <div><strong>Executive and legal discussions</strong><p>Incident response, M&A, quality investigations, and legal strategy can be captured by tools outside counsel, security, or compliance workflows.</p></div>
+                  </div>
                 </div>
               </div>
-              <div class="slide-visual">
-                <img src="images/meetingrisk.jpg" alt="Executive team participating in a hybrid meeting">
+              <div class="slide-visual dark">
+                <img src="images/meetingrisk.jpg" alt="Executive team participating in a protected hybrid meeting">
               </div>
             </article>
 
-            <article class="report-slide" data-slide aria-hidden="true">
+            <article class="slide" data-slide>
               <div class="slide-visual">
-                <img src="images/legal.jpeg" alt="Private workspace prepared for confidential compliance work">
+                <img src="images/legal.jpeg" alt="Private office prepared for confidential compliance work">
               </div>
               <div class="slide-content">
-                <span class="slide-kicker">05 / Evidence</span>
-                <h2>Governance must be visible and provable.</h2>
+                <span class="slide-number">Slide 05 / Beyond HIPAA</span>
+                <h2>Regulators also look at governance evidence.</h2>
                 <div class="mini-grid">
-                  <div class="mini-card"><strong>Approved-tool policy</strong><p>Define which meeting assistants are permitted and what review they must complete.</p></div>
-                  <div class="mini-card"><strong>Consent workflow</strong><p>Align recording and notice practices with the people, locations, and use cases involved.</p></div>
-                  <div class="mini-card"><strong>Human review</strong><p>Keep clinical and operational accountability with authorized personnel, not an automated summary.</p></div>
-                  <div class="mini-card"><strong>Audit trail</strong><p>Show what tried to enter, which policy applied, and what action was taken.</p></div>
+                  <div class="mini-card">
+                    <strong>CMS Programs</strong>
+                    <p>Organizations need defensible controls around systems and processes that support care delivery, quality, claims, and beneficiary data.</p>
+                  </div>
+                  <div class="mini-card">
+                    <strong>ONC And Health IT</strong>
+                    <p>AI-assisted workflows should not create hidden data flows that undermine access, interoperability, privacy, or security governance.</p>
+                  </div>
+                  <div class="mini-card">
+                    <strong>State Privacy Laws</strong>
+                    <p>Consumer health data, biometric or voice information, and recording consent rules can add obligations beyond federal healthcare requirements.</p>
+                  </div>
+                  <div class="mini-card">
+                    <strong>Audit Readiness</strong>
+                    <p>Teams need to show what entered the meeting, what policy applied, and what action was taken.</p>
+                  </div>
                 </div>
               </div>
             </article>
 
-            <article class="report-slide" data-slide aria-hidden="true">
-              <div class="slide-content dark">
-                <span class="slide-kicker">06 / Control model</span>
+            <article class="slide" data-slide>
+              <div class="slide-content">
+                <span class="slide-number">Slide 06 / Control Model</span>
                 <h2>Close the gap at the point of conversation.</h2>
-                <p class="slide-lead">NoteTakerGuard gives healthcare teams a policy enforcement point for AI participants without recording the meeting itself.</p>
-                <div class="deck-platforms" aria-label="Supported meeting platforms">
-                  <span><img src="images/integrationszoom.svg" alt="">Zoom</span>
-                  <span><img src="images/microsoftteams.webp" alt="">Microsoft Teams</span>
-                  <span><img src="images/googlemeet.webp" alt="">Google Meet</span>
-                </div>
-                <div class="mini-grid">
-                  <div class="mini-card"><strong>Detect</strong><p>Identify unapproved AI participants across supported meeting platforms.</p></div>
-                  <div class="mini-card"><strong>Remove</strong><p>Act before a sensitive conversation is captured by an unauthorized service.</p></div>
-                  <div class="mini-card"><strong>Log</strong><p>Preserve the event and policy decision for security, privacy, and compliance review.</p></div>
-                  <div class="mini-card"><strong>Enforce</strong><p>Apply approved-tool policy consistently across high-trust meeting environments.</p></div>
+                <p class="lead">NoteTakerGuard gives healthcare teams a control point for AI participants before meeting data leaves the approved environment.</p>
+                <div class="control-grid">
+                  <div class="control-card">
+                    <strong>Detect</strong>
+                    <p>Identify unauthorized AI bots attempting to join Zoom, Microsoft Teams, and Google Meet sessions.</p>
+                  </div>
+                  <div class="control-card">
+                    <strong>Eject</strong>
+                    <p>Remove unapproved agents before sensitive conversation is captured or sent to third-party clouds.</p>
+                  </div>
+                  <div class="control-card">
+                    <strong>Log</strong>
+                    <p>Preserve audit-ready evidence for privacy, compliance, legal, and security teams.</p>
+                  </div>
+                  <div class="control-card">
+                    <strong>Enforce</strong>
+                    <p>Apply approved-tool policy consistently across regulated meeting environments.</p>
+                  </div>
                 </div>
               </div>
-              <div class="slide-visual dark contain">
-                <img src="assets/slide-4-solution.png" alt="NoteTakerGuard meeting protection product illustration">
+              <div class="slide-visual dark">
+                <img src="assets/slide-4-solution.png" alt="NoteTakerGuard blocking unauthorized access product visual">
               </div>
             </article>
           </div>
 
           <div class="deck-controls">
-            <div class="control-group">
-              <button class="deck-control play-toggle" type="button" data-play-toggle aria-pressed="true">Pause</button>
-            </div>
-            <div class="deck-status" aria-live="polite">
-              <span class="slide-count" data-count>Slide 1 of 6</span>
-              <span class="deck-progress" aria-hidden="true"><span></span></span>
-            </div>
-            <div class="control-group">
-              <button class="deck-control" type="button" data-prev aria-label="Previous slide">←</button>
-              <button class="deck-control" type="button" data-next aria-label="Next slide">→</button>
-            </div>
+            <button class="deck-button secondary prev" type="button" data-prev>Previous</button>
+            <span class="slide-count" data-count>Slide 1 of 6</span>
+            <button class="deck-button primary next" type="button" data-next>Next</button>
           </div>
-        </div>
-        <div class="deck-dots" data-dots aria-label="Choose a slide"></div>
+        </section>
+        <div class="dots" aria-label="Slide navigation" data-dots></div>
       </div>
     </section>
 
-    <section class="report-next">
-      <div class="shell next-grid">
+    <section class="summary">
+      <div class="container summary-grid">
         <div>
-          <p class="eyebrow">Continue exploring</p>
-          <h2>See the cross-industry regulatory framework.</h2>
-          <p>Compare the meeting-layer control problem across financial services, healthcare, and public-sector environments.</p>
-          <p class="legal-note">This briefing is for general informational purposes and is not legal, regulatory, or compliance advice.</p>
+          <p class="eyebrow">Next Step</p>
+          <h2>Start with a 48-hour shadow audit.</h2>
+          <p>See which unauthorized AI bots are entering healthcare meetings before deciding how to govern them.</p>
         </div>
-        <a class="report-button" href="regulatory-compliance-framework.html">Open the framework <span aria-hidden="true">→</span></a>
+        <a class="button primary" href="https://zcal.co/nicoleflowers">Book a Demo</a>
       </div>
     </section>
   </main>
 
-  <footer class="report-footer">
-    <div class="shell"><span>&copy; 2026 The Flow Partners Incorporated.</span><span>NoteTakerGuard is a product of The Flow Partners.</span></div>
+  <footer class="footer">
+    <div class="container">&copy; 2026 by The Flow Partners Incorporated.</div>
   </footer>
-  <script src="report-deck.js"></script>
+
+  <script>
+    const slides = Array.from(document.querySelectorAll("[data-slide]"));
+    const prev = document.querySelector("[data-prev]");
+    const next = document.querySelector("[data-next]");
+    const count = document.querySelector("[data-count]");
+    const dotsWrap = document.querySelector("[data-dots]");
+    let active = 0;
+
+    const dots = slides.map((_, index) => {
+      const dot = document.createElement("button");
+      dot.className = "dot";
+      dot.type = "button";
+      dot.setAttribute("aria-label", `Go to slide ${index + 1}`);
+      dot.addEventListener("click", () => showSlide(index));
+      dotsWrap.appendChild(dot);
+      return dot;
+    });
+
+    function showSlide(index) {
+      active = (index + slides.length) % slides.length;
+      slides.forEach((slide, slideIndex) => {
+        slide.classList.toggle("active", slideIndex === active);
+      });
+      dots.forEach((dot, dotIndex) => {
+        dot.classList.toggle("active", dotIndex === active);
+      });
+      count.textContent = `Slide ${active + 1} of ${slides.length}`;
+    }
+
+    prev.addEventListener("click", () => showSlide(active - 1));
+    next.addEventListener("click", () => showSlide(active + 1));
+    window.addEventListener("keydown", (event) => {
+      if (event.key === "ArrowLeft") showSlide(active - 1);
+      if (event.key === "ArrowRight") showSlide(active + 1);
+    });
+
+    showSlide(0);
+  </script>
 </body>
 </html>

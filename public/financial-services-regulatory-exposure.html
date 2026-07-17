@@ -1,0 +1,494 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Financial services regulatory exposure from unauthorized AI notetaker bots and how NoteTakerGuard helps regulated firms close the meeting-edge security gap.">
+  <title>Financial Services Regulatory Exposure | NoteTakerGuard</title>
+  <link rel="icon" type="image/png" sizes="32x32" href="images/favicon.png">
+  <style>
+    :root {
+      --black: #050505;
+      --coal: #111111;
+      --panel: #161616;
+      --white: #ffffff;
+      --muted: #b9bec8;
+      --line: #2d2d2d;
+      --line-light: #dde2ea;
+      --blue: #00a7e1;
+      --deep-blue: #075ea8;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      color: var(--white);
+      background: var(--black);
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    .container {
+      width: min(1120px, calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+      background: rgba(5, 5, 5, 0.94);
+      backdrop-filter: blur(18px);
+    }
+
+    .nav {
+      display: flex;
+      min-height: 74px;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 900;
+      line-height: 1.05;
+    }
+
+    .brand img {
+      width: 40px;
+      height: 40px;
+      object-fit: contain;
+    }
+
+    .brand small {
+      display: block;
+      margin-top: 3px;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .button {
+      display: inline-flex;
+      min-height: 48px;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 13px 19px;
+      border: 1px solid transparent;
+      border-radius: 0;
+      background: transparent;
+      color: inherit;
+      cursor: pointer;
+      font-size: 15px;
+      font-weight: 900;
+      line-height: 1.15;
+      text-align: center;
+      transition: background 180ms ease, color 180ms ease, transform 180ms ease, border-color 180ms ease;
+    }
+
+    .button:hover {
+      transform: translateY(-1px);
+    }
+
+    .button.primary {
+      background: var(--blue);
+      color: #00131d;
+    }
+
+    .button.primary:hover {
+      background: #52d2ff;
+    }
+
+    .button.secondary {
+      border-color: rgba(255, 255, 255, 0.42);
+      color: var(--white);
+    }
+
+    .button.secondary:hover {
+      border-color: var(--blue);
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    .article-hero {
+      padding: 76px 0 44px;
+      background:
+        radial-gradient(circle at 82% 18%, rgba(0, 167, 225, 0.22), transparent 31%),
+        linear-gradient(135deg, rgba(9, 18, 25, 0.98) 0%, rgba(5, 5, 5, 0.96) 50%, rgba(0, 0, 0, 1) 100%);
+    }
+
+    .hero-grid {
+      display: grid;
+      gap: 34px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      margin: 0 0 16px;
+      color: var(--blue);
+      font-size: 13px;
+      font-weight: 900;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+    }
+
+    h1,
+    h2,
+    h3,
+    p {
+      margin-top: 0;
+    }
+
+    h1 {
+      max-width: 850px;
+      margin-bottom: 22px;
+      font-size: clamp(42px, 9vw, 84px);
+      line-height: 0.94;
+      letter-spacing: 0;
+    }
+
+    h2 {
+      margin-bottom: 16px;
+      font-size: clamp(30px, 5vw, 52px);
+      line-height: 1;
+      letter-spacing: 0;
+    }
+
+    h3 {
+      margin-bottom: 10px;
+      font-size: 22px;
+      line-height: 1.16;
+    }
+
+    .lead {
+      max-width: 760px;
+      color: #e4e8ef;
+      font-size: clamp(18px, 2.2vw, 22px);
+      font-weight: 700;
+    }
+
+    .hero-card {
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      background: #081018;
+    }
+
+    .hero-card img {
+      width: 100%;
+      min-height: 280px;
+      object-fit: cover;
+    }
+
+    .article-body {
+      padding: 70px 0;
+      color: #111827;
+      background: var(--white);
+    }
+
+    .article-layout {
+      display: grid;
+      gap: 36px;
+    }
+
+    .content {
+      max-width: 820px;
+    }
+
+    .content p,
+    .content li {
+      color: #334155;
+      font-size: 18px;
+      font-weight: 650;
+    }
+
+    .content section {
+      padding: 0 0 34px;
+      border-bottom: 1px solid var(--line-light);
+      margin-bottom: 34px;
+    }
+
+    .content section:last-child {
+      border-bottom: 0;
+      margin-bottom: 0;
+      padding-bottom: 0;
+    }
+
+    .callout {
+      padding: 24px;
+      border-left: 5px solid var(--blue);
+      margin: 28px 0;
+      background: #f1f8fc;
+      color: #17364b;
+      font-size: 19px;
+      font-weight: 900;
+    }
+
+    .risk-grid,
+    .matrix-grid {
+      display: grid;
+      gap: 14px;
+      margin-top: 22px;
+    }
+
+    .risk-card,
+    .matrix-card {
+      padding: 22px;
+      border: 1px solid var(--line-light);
+      background: #f6f8fb;
+    }
+
+    .risk-card strong,
+    .matrix-card strong {
+      display: block;
+      margin-bottom: 8px;
+      color: var(--deep-blue);
+      font-size: 18px;
+      font-weight: 950;
+    }
+
+    .matrix-card p {
+      margin-bottom: 10px;
+    }
+
+    .article-aside {
+      align-self: start;
+      padding: 24px;
+      border: 1px solid var(--line-light);
+      background: #f6f8fb;
+    }
+
+    .article-aside h3 {
+      color: #050505;
+    }
+
+    .article-aside ul {
+      display: grid;
+      gap: 10px;
+      margin: 0 0 22px;
+      padding: 0;
+      color: #334155;
+      font-weight: 800;
+      list-style: none;
+    }
+
+    .article-aside li::before {
+      margin-right: 8px;
+      color: var(--blue);
+      content: ">";
+      font-weight: 900;
+    }
+
+    .cta-band {
+      padding: 42px 0;
+      border-top: 1px solid rgba(255, 255, 255, 0.12);
+      background: #111;
+    }
+
+    .cta-grid {
+      display: grid;
+      gap: 20px;
+      align-items: center;
+    }
+
+    .cta-grid p {
+      max-width: 680px;
+      color: #d8dee8;
+      font-size: 18px;
+      font-weight: 700;
+    }
+
+    .footer {
+      padding: 34px 0;
+      border-top: 1px solid rgba(255, 255, 255, 0.12);
+      background: #050505;
+      color: var(--muted);
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    @media (min-width: 760px) {
+      .risk-grid,
+      .matrix-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .cta-grid {
+        grid-template-columns: 1fr auto;
+      }
+    }
+
+    @media (min-width: 980px) {
+      .hero-grid {
+        grid-template-columns: 1.05fr 0.95fr;
+      }
+
+      .article-layout {
+        grid-template-columns: minmax(0, 1fr) 320px;
+      }
+    }
+
+    @media (max-width: 520px) {
+      .brand small {
+        display: none;
+      }
+
+      .button {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav">
+      <a class="brand" href="index.html" aria-label="NoteTakerGuard home">
+        <img src="images/The Flow Partners Logo.png" alt="" width="40" height="40">
+        <span>NoteTakerGuard <small>by The Flow Partners</small></span>
+      </a>
+      <a class="button secondary" href="product.html">Back to Product</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="article-hero">
+      <div class="container hero-grid">
+        <div>
+          <p class="eyebrow">Financial Services Regulatory Exposure</p>
+          <h1>Unauthorized AI notetaker bots are a multi-regulatory threat for financial firms.</h1>
+          <p class="lead">AI meeting bots can record, transcribe, and store sensitive client, trading, and advisory conversations in third-party clouds without firm supervision, retention controls, vendor governance, or audit-ready evidence.</p>
+        </div>
+        <div class="hero-card" aria-label="Financial services regulatory exposure visual">
+          <img src="assets/slide-6-financial-services.png" alt="Financial services regulatory exposure visual from the NoteTakerGuard presentation">
+        </div>
+      </div>
+    </section>
+
+    <section class="article-body">
+      <div class="container article-layout">
+        <article class="content">
+          <section>
+            <p>For financial services organizations, unauthorized AI notetaker bots create exposure across several regulatory regimes at once. A single bot joining a client call, portfolio review, trading strategy meeting, or internal supervisory discussion can create record-keeping, communications, privacy, cybersecurity, and vendor-risk issues before anyone on the call realizes the bot is present.</p>
+            <p>The core problem is control. When employees use personal or unapproved tools such as AI meeting assistants, firms may lose visibility into where transcripts are stored, who can access them, whether the records are retained in the required format, and whether the tool's privacy terms conflict with the firm's commitments to clients.</p>
+            <div class="callout">NoteTakerGuard is built to detect and eject unauthorized AI bots in under 5 seconds without recording audio or video.</div>
+          </section>
+
+          <section>
+            <h2>Where The Risk Shows Up</h2>
+            <div class="risk-grid">
+              <div class="risk-card">
+                <strong>SEC and FINRA</strong>
+                <p>Unauthorized bots can create record-keeping, supervisory, and communication-retention failures when transcripts or AI summaries are created outside approved systems.</p>
+              </div>
+              <div class="risk-card">
+                <strong>CFTC</strong>
+                <p>Commodity trading advice, derivatives strategy, and sensitive market discussions can be captured in unmanaged accounts with no compliant archiving or audit trail.</p>
+              </div>
+              <div class="risk-card">
+                <strong>NYDFS</strong>
+                <p>Financial institutions may face cybersecurity and vendor-risk gaps when unapproved bots process meeting data without assessment, encryption, or logging.</p>
+              </div>
+              <div class="risk-card">
+                <strong>CCPA and CPRA</strong>
+                <p>Customer voice data and personal information may be collected, stored, or reused by third-party tools in ways that conflict with privacy disclosures and deletion rights.</p>
+              </div>
+            </div>
+          </section>
+
+          <section>
+            <h2>SEC Exposure</h2>
+            <p>SEC obligations can be implicated when a bot captures personally identifiable information, account details, investment strategies, advisory recommendations, or client communications. If that information is stored in a third-party account without safeguards, the firm may not be able to prove proper protection, retention, or supervision.</p>
+            <p>For broker-dealers and investment advisers, the issue is not only that a meeting was recorded. The larger issue is whether the resulting transcript or summary became a business communication or record that the firm cannot preserve, supervise, retrieve, or produce during an examination.</p>
+          </section>
+
+          <section>
+            <h2>FINRA Exposure</h2>
+            <p>FINRA rules require broker-dealers to supervise business communications and maintain books and records. A personal AI bot can create an unsupervised channel: it joins the meeting, produces a summary, stores the transcript in a personal account, and may send client-facing text without the firm's normal review workflow.</p>
+            <p>NoteTakerGuard helps close that gap by enforcing which AI tools are permitted, detecting unauthorized meeting participants in real time, ejecting them before data capture, and creating compliance evidence that shows blocked attempts.</p>
+          </section>
+
+          <section>
+            <h2>CFTC Exposure</h2>
+            <p>Futures commission merchants, commodity trading advisors, and other derivatives-market participants may discuss trading strategies, risk management decisions, and market-sensitive information in meetings. If an unauthorized bot records those conversations and stores the transcript outside approved systems, the firm can lose the ability to maintain complete records and tamper-proof audit evidence.</p>
+          </section>
+
+          <section>
+            <h2>State Privacy And Cybersecurity Exposure</h2>
+            <p>NYDFS cybersecurity requirements put pressure on covered financial institutions to manage vendor risk, protect nonpublic information, and maintain audit trails. Unapproved AI bots are often outside that vendor-risk process.</p>
+            <p>California privacy obligations can also matter when customer calls or voice data are captured by a third party. If the bot vendor's terms allow secondary use of data, the company may create a privacy commitment problem that is difficult to unwind after the recording has already happened.</p>
+          </section>
+
+          <section>
+            <h2>How NoteTakerGuard Helps</h2>
+            <div class="matrix-grid">
+              <div class="matrix-card">
+                <strong>Detect</strong>
+                <p>Identifies unauthorized AI bots attempting to join Teams, Zoom, and Google Meet sessions.</p>
+              </div>
+              <div class="matrix-card">
+                <strong>Eject</strong>
+                <p>Removes unapproved bots before meeting data is captured or sent to third-party clouds.</p>
+              </div>
+              <div class="matrix-card">
+                <strong>Log</strong>
+                <p>Creates audit-ready evidence and supports SIEM workflows through tools such as Splunk, Sentinel, and QRadar.</p>
+              </div>
+              <div class="matrix-card">
+                <strong>Enforce</strong>
+                <p>Helps firms maintain policy control over which AI tools are allowed in regulated meeting environments.</p>
+              </div>
+            </div>
+          </section>
+        </article>
+
+        <aside class="article-aside">
+          <h3>Regulatory Themes</h3>
+          <ul>
+            <li>Record keeping</li>
+            <li>Supervision</li>
+            <li>Client communications</li>
+            <li>Vendor risk</li>
+            <li>Privacy commitments</li>
+            <li>Cybersecurity audit trails</li>
+          </ul>
+          <a class="button primary" href="https://zcal.co/nicoleflowers">Book a Demo</a>
+        </aside>
+      </div>
+    </section>
+
+    <section class="cta-band">
+      <div class="container cta-grid">
+        <div>
+          <p class="eyebrow">Next Step</p>
+          <h2>Start with a 48-hour shadow audit.</h2>
+          <p>See which unauthorized AI bots are entering meetings before deciding how to govern them.</p>
+        </div>
+        <a class="button primary" href="https://notetakerguard.com/pricing">Start Audit</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">&copy; 2026 by The Flow Partners Incorporated.</div>
+  </footer>
+</body>
+</html>
