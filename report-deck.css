@@ -107,6 +107,9 @@ button { font: inherit; }
 .metric span { color: #4e5b69; font-size: 11px; font-weight: 800; text-transform: uppercase; }
 .framework-cloud { display: flex; flex-wrap: wrap; gap: 10px; }
 .framework-cloud span { flex: 1 1 120px; padding: 18px 12px; border: 1px solid #b8c5d1; background: #fff; color: #0c5ca5; font-size: 13px; font-weight: 900; text-align: center; }
+.deck-platforms { display: flex; flex-wrap: wrap; gap: 8px; margin: -8px 0 22px; }
+.deck-platforms span { display: inline-flex; min-height: 42px; padding: 7px 11px; align-items: center; gap: 8px; border: 1px solid #2c3a48; background: #151b23; color: #fff; font-size: 10px; font-weight: 850; }
+.deck-platforms img { width: 27px; height: 27px; padding: 3px; border-radius: 4px; background: #fff; object-fit: contain; }
 
 .deck-controls { display: grid; min-height: 82px; padding: 0 22px; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 18px; border-top: 1px solid var(--line); background: #0a0c10; }
 .control-group { display: flex; align-items: center; gap: 8px; }
