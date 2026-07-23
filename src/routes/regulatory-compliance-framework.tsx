@@ -5,20 +5,20 @@ import { RawHtmlPage } from "../components/RawHtmlPage";
 export const Route = createFileRoute("/regulatory-compliance-framework")({
   head: () => ({
     meta: [
-      { title: "Regulatory Compliance Framework | NoteTakerGuard" },
+      { title: "Regulatory Considerations for Meeting Governance | NoteTakerGuard" },
       {
         name: "description",
         content:
-          "An interactive framework for governing unauthorized AI notetakers across regulated industries.",
+          "Interactive regulatory considerations for governing unauthorized AI notetakers across regulated industries.",
       },
-      { property: "og:title", content: "Regulatory Compliance Framework | NoteTakerGuard" },
+      { property: "og:title", content: "Regulatory Considerations for Meeting Governance | NoteTakerGuard" },
       {
         property: "og:description",
         content:
           "Explore how AI meeting tools intersect with governance expectations across regulated industries.",
       },
-      { property: "og:image", content: "/images/socialsharingimage-v2.png" },
-      { name: "twitter:image", content: "/images/socialsharingimage-v2.png" },
+      { property: "og:image", content: "/og.png" },
+      { name: "twitter:image", content: "/og.png" },
     ],
     links: [{ rel: "stylesheet", href: "/report-deck.css" }],
   }),

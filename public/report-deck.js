@@ -2,6 +2,8 @@
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   document.querySelectorAll('[data-report-deck]').forEach(deck => {
+    if (deck.dataset.initialized === 'true') return;
+    deck.dataset.initialized = 'true';
     const slides = Array.from(deck.querySelectorAll('[data-slide]'));
     const previous = deck.querySelector('[data-prev]');
     const next = deck.querySelector('[data-next]');
@@ -86,7 +88,6 @@
       }
     });
     deck.addEventListener('pointerdown', event => {
-      if (event.pointerType === 'mouse') return;
       pointerStart = event.clientX;
     });
     deck.addEventListener('pointerup', event => {
@@ -97,6 +98,7 @@
       playing = false;
       show(active + (distance < 0 ? 1 : -1), distance < 0 ? 1 : -1);
     });
+    deck.addEventListener('pointercancel', () => { pointerStart = null; });
     document.addEventListener('visibilitychange', () => {
       if (document.hidden) window.clearTimeout(timer);
       else resetTimer();

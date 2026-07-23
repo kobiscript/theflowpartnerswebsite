@@ -9,16 +9,16 @@ export const Route = createFileRoute("/")({
       {
         name: "description",
         content:
-          "NoteTakerGuard detects, removes, and documents unauthorized AI notetakers across enterprise meeting platforms.",
+          "NoteTakerGuard helps regulated organizations see and govern unauthorized AI participants across Zoom, Microsoft Teams, and Google Meet.",
       },
       { property: "og:title", content: "NoteTakerGuard | Intelligent Meeting Governance" },
       {
         property: "og:description",
         content:
-          "Detect, remove, and document unauthorized AI notetakers across enterprise meeting platforms.",
+          "See and govern unauthorized AI participants across Zoom, Microsoft Teams, and Google Meet.",
       },
-      { property: "og:image", content: "/images/socialsharingimage-v2.png" },
-      { name: "twitter:image", content: "/images/socialsharingimage-v2.png" },
+      { property: "og:image", content: "/og.png" },
+      { name: "twitter:image", content: "/og.png" },
     ],
     links: [{ rel: "stylesheet", href: "/home.css" }],
   }),

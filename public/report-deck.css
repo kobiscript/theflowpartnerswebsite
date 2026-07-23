@@ -42,6 +42,9 @@ button { font: inherit; }
 .back-link { display: inline-flex; align-items: center; gap: 12px; padding-bottom: 5px; border-bottom: 1px solid var(--sky); font-size: 11px; font-weight: 850; letter-spacing: 0.08em; text-transform: uppercase; }
 .back-link span { transition: transform 180ms ease; }
 .back-link:hover span { transform: translateX(-5px); }
+.report-actions { display: flex; align-items: center; gap: 20px; }
+.report-header-cta { display: inline-flex; min-height: 42px; align-items: center; gap: 12px; padding: 0 15px; background: var(--blue); color: #fff; font-size: 9px; font-weight: 900; letter-spacing: 0.08em; text-transform: uppercase; transition: background 180ms ease, transform 180ms ease; }
+.report-header-cta:hover { background: #2398ff; transform: translateY(-2px); }
 
 .report-hero {
   position: relative;
@@ -133,6 +136,10 @@ button { font: inherit; }
 .report-next p:not(.eyebrow) { max-width: 720px; margin: 0; color: #4e5968; font-size: 17px; font-weight: 650; }
 .report-button { display: inline-flex; min-height: 56px; align-items: center; justify-content: space-between; gap: 30px; padding: 0 22px; background: var(--blue); color: #fff; font-size: 10px; font-weight: 900; letter-spacing: 0.08em; text-transform: uppercase; transition: background 180ms ease, transform 180ms ease; }
 .report-button:hover { background: #2398ff; transform: translateY(-3px); }
+.report-next-actions { display: grid; min-width: 300px; gap: 9px; }
+.report-button.secondary { border: 1px solid #7d8793; background: transparent; color: #17202a; }
+.report-button.secondary:hover { border-color: var(--blue); background: #e6f2ff; }
+.report-deck { touch-action: pan-y; }
 .legal-note { margin: 22px 0 0; color: #737c88; font-size: 11px; }
 .report-footer { padding: 32px 0; border-top: 1px solid var(--line); color: #737b86; font-size: 11px; }
 .report-footer .shell { display: flex; justify-content: space-between; gap: 20px; }
@@ -150,6 +157,8 @@ button { font: inherit; }
 @media (max-width: 650px) {
   :root { --shell: calc(100% - 30px); }
   .report-nav { min-height: 70px; }
+  .report-actions { gap: 10px; }
+  .report-header-cta { min-height: 38px; padding: 0 10px; font-size: 8px; }
   .report-brand small { display: none; }
   .back-link { font-size: 9px; }
   .report-hero { padding: 58px 0 30px; }
@@ -167,6 +176,7 @@ button { font: inherit; }
   .control-group { grid-row: 2; }
   .control-group:last-child { grid-row: 2; }
   .next-grid { grid-template-columns: 1fr; }
+  .report-next-actions { min-width: 0; }
   .report-button { width: 100%; }
   .report-footer .shell { flex-direction: column; }
 }

@@ -64,7 +64,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       {
         name: "description",
         content:
-          "NoteTakerGuard detects, removes, and documents unauthorized AI notetakers across enterprise meeting platforms.",
+          "NoteTakerGuard helps regulated organizations see and govern unauthorized AI participants across enterprise meeting platforms.",
       },
       { property: "og:site_name", content: "NoteTakerGuard" },
       { property: "og:type", content: "website" },

@@ -6,7 +6,7 @@ export const Route = createFileRoute("/product")({
   head: () => ({
     meta: [
       { title: "Product | NoteTakerGuard" },
-      { name: "description", content: "The NoteTakerGuard platform for AI notetaker governance." },
+      { name: "description", content: "See NoteTakerGuard meeting-governance capabilities, platform coverage, limitations, and evaluation options." },
     ],
     links: [{ rel: "stylesheet", href: "/site-pages.css" }],
   }),
