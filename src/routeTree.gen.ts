@@ -9,58 +9,20 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as RegulatoryComplianceFrameworkRouteImport } from './routes/regulatory-compliance-framework'
-import { Route as ProductRouteImport } from './routes/product'
-import { Route as PricingRouteImport } from './routes/pricing'
-import { Route as PilotsRouteImport } from './routes/pilots'
-import { Route as HealthcareComplianceBriefRouteImport } from './routes/healthcare-compliance-brief'
-import { Route as FinancialServicesRegulatoryExposureRouteImport } from './routes/financial-services-regulatory-exposure'
-import { Route as ContactRouteImport } from './routes/contact'
-import { Route as AccessibilityRouteImport } from './routes/accessibility'
-import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AboutRouteImport } from './routes/about'
+import { Route as AccessibilityRouteImport } from './routes/accessibility'
+import { Route as ContactRouteImport } from './routes/contact'
+import { Route as FinancialServicesRegulatoryExposureRouteImport } from './routes/financial-services-regulatory-exposure'
+import { Route as HealthcareComplianceBriefRouteImport } from './routes/healthcare-compliance-brief'
+import { Route as PilotsRouteImport } from './routes/pilots'
+import { Route as PricingRouteImport } from './routes/pricing'
+import { Route as ProductRouteImport } from './routes/product'
+import { Route as RegulatoryComplianceFrameworkRouteImport } from './routes/regulatory-compliance-framework'
 
-const RegulatoryComplianceFrameworkRoute =
-  RegulatoryComplianceFrameworkRouteImport.update({
-    id: '/regulatory-compliance-framework',
-    path: '/regulatory-compliance-framework',
-    getParentRoute: () => rootRouteImport,
-  } as any)
-const ProductRoute = ProductRouteImport.update({
-  id: '/product',
-  path: '/product',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const PricingRoute = PricingRouteImport.update({
-  id: '/pricing',
-  path: '/pricing',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const PilotsRoute = PilotsRouteImport.update({
-  id: '/pilots',
-  path: '/pilots',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const HealthcareComplianceBriefRoute =
-  HealthcareComplianceBriefRouteImport.update({
-    id: '/healthcare-compliance-brief',
-    path: '/healthcare-compliance-brief',
-    getParentRoute: () => rootRouteImport,
-  } as any)
-const FinancialServicesRegulatoryExposureRoute =
-  FinancialServicesRegulatoryExposureRouteImport.update({
-    id: '/financial-services-regulatory-exposure',
-    path: '/financial-services-regulatory-exposure',
-    getParentRoute: () => rootRouteImport,
-  } as any)
-const ContactRoute = ContactRouteImport.update({
-  id: '/contact',
-  path: '/contact',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const AccessibilityRoute = AccessibilityRouteImport.update({
-  id: '/accessibility',
-  path: '/accessibility',
+const IndexRoute = IndexRouteImport.update({
+  id: '/',
+  path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AboutRoute = AboutRouteImport.update({
@@ -68,11 +30,49 @@ const AboutRoute = AboutRouteImport.update({
   path: '/about',
   getParentRoute: () => rootRouteImport,
 } as any)
-const IndexRoute = IndexRouteImport.update({
-  id: '/',
-  path: '/',
+const AccessibilityRoute = AccessibilityRouteImport.update({
+  id: '/accessibility',
+  path: '/accessibility',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FinancialServicesRegulatoryExposureRoute =
+  FinancialServicesRegulatoryExposureRouteImport.update({
+    id: '/financial-services-regulatory-exposure',
+    path: '/financial-services-regulatory-exposure',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const HealthcareComplianceBriefRoute =
+  HealthcareComplianceBriefRouteImport.update({
+    id: '/healthcare-compliance-brief',
+    path: '/healthcare-compliance-brief',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const PilotsRoute = PilotsRouteImport.update({
+  id: '/pilots',
+  path: '/pilots',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PricingRoute = PricingRouteImport.update({
+  id: '/pricing',
+  path: '/pricing',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProductRoute = ProductRouteImport.update({
+  id: '/product',
+  path: '/product',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RegulatoryComplianceFrameworkRoute =
+  RegulatoryComplianceFrameworkRouteImport.update({
+    id: '/regulatory-compliance-framework',
+    path: '/regulatory-compliance-framework',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -165,60 +165,11 @@ export interface RootRouteChildren {
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/regulatory-compliance-framework': {
-      id: '/regulatory-compliance-framework'
-      path: '/regulatory-compliance-framework'
-      fullPath: '/regulatory-compliance-framework'
-      preLoaderRoute: typeof RegulatoryComplianceFrameworkRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/product': {
-      id: '/product'
-      path: '/product'
-      fullPath: '/product'
-      preLoaderRoute: typeof ProductRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/pricing': {
-      id: '/pricing'
-      path: '/pricing'
-      fullPath: '/pricing'
-      preLoaderRoute: typeof PricingRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/pilots': {
-      id: '/pilots'
-      path: '/pilots'
-      fullPath: '/pilots'
-      preLoaderRoute: typeof PilotsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/healthcare-compliance-brief': {
-      id: '/healthcare-compliance-brief'
-      path: '/healthcare-compliance-brief'
-      fullPath: '/healthcare-compliance-brief'
-      preLoaderRoute: typeof HealthcareComplianceBriefRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/financial-services-regulatory-exposure': {
-      id: '/financial-services-regulatory-exposure'
-      path: '/financial-services-regulatory-exposure'
-      fullPath: '/financial-services-regulatory-exposure'
-      preLoaderRoute: typeof FinancialServicesRegulatoryExposureRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/contact': {
-      id: '/contact'
-      path: '/contact'
-      fullPath: '/contact'
-      preLoaderRoute: typeof ContactRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/accessibility': {
-      id: '/accessibility'
-      path: '/accessibility'
-      fullPath: '/accessibility'
-      preLoaderRoute: typeof AccessibilityRouteImport
+    '/': {
+      id: '/'
+      path: '/'
+      fullPath: '/'
+      preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/about': {
@@ -228,11 +179,60 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AboutRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/': {
-      id: '/'
-      path: '/'
-      fullPath: '/'
-      preLoaderRoute: typeof IndexRouteImport
+    '/accessibility': {
+      id: '/accessibility'
+      path: '/accessibility'
+      fullPath: '/accessibility'
+      preLoaderRoute: typeof AccessibilityRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/financial-services-regulatory-exposure': {
+      id: '/financial-services-regulatory-exposure'
+      path: '/financial-services-regulatory-exposure'
+      fullPath: '/financial-services-regulatory-exposure'
+      preLoaderRoute: typeof FinancialServicesRegulatoryExposureRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/healthcare-compliance-brief': {
+      id: '/healthcare-compliance-brief'
+      path: '/healthcare-compliance-brief'
+      fullPath: '/healthcare-compliance-brief'
+      preLoaderRoute: typeof HealthcareComplianceBriefRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/pilots': {
+      id: '/pilots'
+      path: '/pilots'
+      fullPath: '/pilots'
+      preLoaderRoute: typeof PilotsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/pricing': {
+      id: '/pricing'
+      path: '/pricing'
+      fullPath: '/pricing'
+      preLoaderRoute: typeof PricingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/product': {
+      id: '/product'
+      path: '/product'
+      fullPath: '/product'
+      preLoaderRoute: typeof ProductRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/regulatory-compliance-framework': {
+      id: '/regulatory-compliance-framework'
+      path: '/regulatory-compliance-framework'
+      fullPath: '/regulatory-compliance-framework'
+      preLoaderRoute: typeof RegulatoryComplianceFrameworkRouteImport
       parentRoute: typeof rootRouteImport
     }
   }

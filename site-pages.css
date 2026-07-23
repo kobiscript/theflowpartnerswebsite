@@ -250,7 +250,25 @@ section {
 }
 
 .dark-panel {
+  position: relative;
+  overflow: hidden;
   background: var(--coal);
+}
+
+.dark-panel::before {
+  position: absolute;
+  top: -180px;
+  right: -180px;
+  width: 520px;
+  height: 520px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(0, 167, 225, 0.16), rgba(0, 167, 225, 0) 70%);
+  content: "";
+  pointer-events: none;
+}
+
+.dark-panel > .container {
+  position: relative;
 }
 
 .section-head {
@@ -307,6 +325,63 @@ section {
   color: var(--muted);
   font-size: 18px;
   font-weight: 700;
+}
+
+.choice-grid {
+  display: grid;
+  gap: 1px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: rgba(255, 255, 255, 0.14);
+}
+
+.choice-card {
+  display: grid;
+  min-height: 230px;
+  grid-template-columns: 48px minmax(0, 1fr);
+  gap: 22px;
+  align-content: start;
+  padding: 30px;
+  background: linear-gradient(145deg, #171b20 0%, var(--panel) 58%, #151515 100%);
+  transition: background 180ms ease, transform 180ms ease;
+}
+
+.choice-card:hover {
+  position: relative;
+  z-index: 1;
+  background: linear-gradient(145deg, #19252c 0%, #1a1f23 58%, #171717 100%);
+  transform: translateY(-2px);
+}
+
+.choice-number {
+  color: var(--blue);
+  font-size: 13px;
+  font-weight: 950;
+  letter-spacing: 0.12em;
+}
+
+.choice-card h3 {
+  max-width: 480px;
+  margin-bottom: 14px;
+  font-size: clamp(22px, 2.4vw, 30px);
+}
+
+.choice-card p {
+  max-width: 560px;
+  margin-bottom: 0;
+  color: var(--muted);
+  font-size: 17px;
+  font-weight: 700;
+}
+
+.choice-closing {
+  max-width: 920px;
+  margin: 34px 0 0;
+  padding: 4px 0 4px 22px;
+  border-left: 4px solid var(--blue);
+  color: var(--white);
+  font-size: clamp(20px, 2.4vw, 28px);
+  font-weight: 900;
+  line-height: 1.25;
 }
 
 .visual-panel {
@@ -488,6 +563,10 @@ section {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
+  .choice-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
   .footer-links {
     grid-template-columns: repeat(2, max-content);
     justify-content: end;
@@ -524,5 +603,12 @@ section {
 
   .button {
     width: 100%;
+  }
+
+  .choice-card {
+    min-height: 0;
+    grid-template-columns: 1fr;
+    gap: 14px;
+    padding: 24px;
   }
 }
