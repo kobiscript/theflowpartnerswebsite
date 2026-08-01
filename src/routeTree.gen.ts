@@ -13,12 +13,14 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as AccessibilityRouteImport } from './routes/accessibility'
 import { Route as ContactRouteImport } from './routes/contact'
+import { Route as DemoRouteImport } from './routes/demo'
 import { Route as FinancialServicesRegulatoryExposureRouteImport } from './routes/financial-services-regulatory-exposure'
 import { Route as HealthcareComplianceBriefRouteImport } from './routes/healthcare-compliance-brief'
 import { Route as PilotsRouteImport } from './routes/pilots'
 import { Route as PricingRouteImport } from './routes/pricing'
 import { Route as ProductRouteImport } from './routes/product'
 import { Route as RegulatoryComplianceFrameworkRouteImport } from './routes/regulatory-compliance-framework'
+import { Route as ShadowAuditRouteImport } from './routes/shadow-audit'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -38,6 +40,11 @@ const AccessibilityRoute = AccessibilityRouteImport.update({
 const ContactRoute = ContactRouteImport.update({
   id: '/contact',
   path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DemoRoute = DemoRouteImport.update({
+  id: '/demo',
+  path: '/demo',
   getParentRoute: () => rootRouteImport,
 } as any)
 const FinancialServicesRegulatoryExposureRoute =
@@ -73,30 +80,39 @@ const RegulatoryComplianceFrameworkRoute =
     path: '/regulatory-compliance-framework',
     getParentRoute: () => rootRouteImport,
   } as any)
+const ShadowAuditRoute = ShadowAuditRouteImport.update({
+  id: '/shadow-audit',
+  path: '/shadow-audit',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/accessibility': typeof AccessibilityRoute
   '/contact': typeof ContactRoute
+  '/demo': typeof DemoRoute
   '/financial-services-regulatory-exposure': typeof FinancialServicesRegulatoryExposureRoute
   '/healthcare-compliance-brief': typeof HealthcareComplianceBriefRoute
   '/pilots': typeof PilotsRoute
   '/pricing': typeof PricingRoute
   '/product': typeof ProductRoute
   '/regulatory-compliance-framework': typeof RegulatoryComplianceFrameworkRoute
+  '/shadow-audit': typeof ShadowAuditRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/accessibility': typeof AccessibilityRoute
   '/contact': typeof ContactRoute
+  '/demo': typeof DemoRoute
   '/financial-services-regulatory-exposure': typeof FinancialServicesRegulatoryExposureRoute
   '/healthcare-compliance-brief': typeof HealthcareComplianceBriefRoute
   '/pilots': typeof PilotsRoute
   '/pricing': typeof PricingRoute
   '/product': typeof ProductRoute
   '/regulatory-compliance-framework': typeof RegulatoryComplianceFrameworkRoute
+  '/shadow-audit': typeof ShadowAuditRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -104,12 +120,14 @@ export interface FileRoutesById {
   '/about': typeof AboutRoute
   '/accessibility': typeof AccessibilityRoute
   '/contact': typeof ContactRoute
+  '/demo': typeof DemoRoute
   '/financial-services-regulatory-exposure': typeof FinancialServicesRegulatoryExposureRoute
   '/healthcare-compliance-brief': typeof HealthcareComplianceBriefRoute
   '/pilots': typeof PilotsRoute
   '/pricing': typeof PricingRoute
   '/product': typeof ProductRoute
   '/regulatory-compliance-framework': typeof RegulatoryComplianceFrameworkRoute
+  '/shadow-audit': typeof ShadowAuditRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -118,36 +136,42 @@ export interface FileRouteTypes {
     | '/about'
     | '/accessibility'
     | '/contact'
+    | '/demo'
     | '/financial-services-regulatory-exposure'
     | '/healthcare-compliance-brief'
     | '/pilots'
     | '/pricing'
     | '/product'
     | '/regulatory-compliance-framework'
+    | '/shadow-audit'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/about'
     | '/accessibility'
     | '/contact'
+    | '/demo'
     | '/financial-services-regulatory-exposure'
     | '/healthcare-compliance-brief'
     | '/pilots'
     | '/pricing'
     | '/product'
     | '/regulatory-compliance-framework'
+    | '/shadow-audit'
   id:
     | '__root__'
     | '/'
     | '/about'
     | '/accessibility'
     | '/contact'
+    | '/demo'
     | '/financial-services-regulatory-exposure'
     | '/healthcare-compliance-brief'
     | '/pilots'
     | '/pricing'
     | '/product'
     | '/regulatory-compliance-framework'
+    | '/shadow-audit'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -155,12 +179,14 @@ export interface RootRouteChildren {
   AboutRoute: typeof AboutRoute
   AccessibilityRoute: typeof AccessibilityRoute
   ContactRoute: typeof ContactRoute
+  DemoRoute: typeof DemoRoute
   FinancialServicesRegulatoryExposureRoute: typeof FinancialServicesRegulatoryExposureRoute
   HealthcareComplianceBriefRoute: typeof HealthcareComplianceBriefRoute
   PilotsRoute: typeof PilotsRoute
   PricingRoute: typeof PricingRoute
   ProductRoute: typeof ProductRoute
   RegulatoryComplianceFrameworkRoute: typeof RegulatoryComplianceFrameworkRoute
+  ShadowAuditRoute: typeof ShadowAuditRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -191,6 +217,13 @@ declare module '@tanstack/react-router' {
       path: '/contact'
       fullPath: '/contact'
       preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/demo': {
+      id: '/demo'
+      path: '/demo'
+      fullPath: '/demo'
+      preLoaderRoute: typeof DemoRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/financial-services-regulatory-exposure': {
@@ -235,6 +268,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof RegulatoryComplianceFrameworkRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/shadow-audit': {
+      id: '/shadow-audit'
+      path: '/shadow-audit'
+      fullPath: '/shadow-audit'
+      preLoaderRoute: typeof ShadowAuditRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -243,6 +283,7 @@ const rootRouteChildren: RootRouteChildren = {
   AboutRoute: AboutRoute,
   AccessibilityRoute: AccessibilityRoute,
   ContactRoute: ContactRoute,
+  DemoRoute: DemoRoute,
   FinancialServicesRegulatoryExposureRoute:
     FinancialServicesRegulatoryExposureRoute,
   HealthcareComplianceBriefRoute: HealthcareComplianceBriefRoute,
@@ -250,6 +291,7 @@ const rootRouteChildren: RootRouteChildren = {
   PricingRoute: PricingRoute,
   ProductRoute: ProductRoute,
   RegulatoryComplianceFrameworkRoute: RegulatoryComplianceFrameworkRoute,
+  ShadowAuditRoute: ShadowAuditRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

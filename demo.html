@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Explore an illustrative, platform-aware NoteTakerGuard meeting-governance workflow.">
+  <title>Qualified Product Demo | NoteTakerGuard</title>
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon.png">
+  <link rel="stylesheet" href="site-pages.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav">
+      <a class="brand" href="index.html" aria-label="NoteTakerGuard home">
+        <img src="images/The Flow Partners Logo.png" alt="" width="40" height="40">
+        <span>NoteTakerGuard <small>by The Flow Partners</small></span>
+      </a>
+      <nav class="desktop-nav" aria-label="Primary navigation">
+        <a href="product.html">Product</a>
+        <a class="active" href="demo.html">Demo</a>
+        <a href="pilots.html">Pilots</a>
+        <a href="contact.html">Contact</a>
+        <a class="header-cta" href="shadow-audit.html">Start audit</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="page-hero demo-hero">
+      <div class="container page-hero-grid">
+        <div>
+          <p class="eyebrow">Qualified product demo</p>
+          <h1>See the workflow without overstating the outcome.</h1>
+          <p class="lead">Explore how NoteTakerGuard can observe an automated participant, compare the event with policy, present platform-appropriate options, and preserve activity for internal review.</p>
+          <div class="page-actions">
+            <a class="button primary" href="shadow-audit.html">Start a 48-hour audit</a>
+            <a class="button secondary" href="contact.html#technical-overview">Request a technical overview</a>
+          </div>
+          <p class="legal-note">Illustrative workflow. It does not represent automatic removal, identical platform capabilities, meeting recording, or compliance certification.</p>
+        </div>
+        <div class="demo-signal" aria-hidden="true">
+          <div class="demo-meeting-core"><strong>NTG</strong><span>Meeting observed</span></div>
+          <div class="demo-person person-a">AK<small>Authorized</small></div>
+          <div class="demo-person person-b">RM<small>Authorized</small></div>
+          <div class="demo-person person-ai">AI<small>Needs review</small></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="dark-panel" id="interactive-demo">
+      <div class="container">
+        <div class="section-head">
+          <div><p class="eyebrow">Interactive platform view</p><h2>Capabilities and limits change by platform.</h2></div>
+          <p>Select a meeting platform to see the connection requirement, visible signals, response limits, and known gaps that should be confirmed during onboarding.</p>
+        </div>
+
+        <div class="demo-platform-tabs" role="tablist" aria-label="Choose a meeting platform">
+          <button type="button" role="tab" aria-selected="false" data-platform="zoom"><img src="images/integrationszoom.svg" alt="" width="30" height="30">Zoom</button>
+          <button type="button" role="tab" aria-selected="true" data-platform="teams"><img src="images/microsoftteams.webp" alt="" width="30" height="30">Microsoft Teams</button>
+          <button type="button" role="tab" aria-selected="false" data-platform="meet"><img src="images/googlemeet.webp" alt="" width="30" height="30">Google Meet</button>
+        </div>
+
+        <div class="demo-console" role="tabpanel" aria-live="polite">
+          <div class="demo-console-head"><div><span>Illustrative meeting event</span><h3 id="demo-platform-name">Microsoft Teams</h3></div><span class="demo-status">Needs review</span></div>
+          <div class="demo-event-grid">
+            <article><span>01 · Observe</span><strong>Automated participant signal</strong><p id="demo-visible">Participant and meeting events Microsoft makes available to the connected tenant.</p></article>
+            <article><span>02 · Check policy</span><strong>Authorization not confirmed</strong><p>NoteTakerGuard presents the observed event and relevant policy signal for customer review.</p></article>
+            <article><span>03 · Present response</span><strong>Host action available</strong><p id="demo-response">Available actions vary with organizer rights, tenant policy, and Microsoft capabilities.</p></article>
+            <article><span>04 · Preserve history</span><strong>Governance event recorded</strong><p>Observed activity, policy signals, and actions are preserved as a structured evidence trail for internal review.</p></article>
+          </div>
+          <dl class="demo-facts">
+            <div><dt>Connection requirement</dt><dd id="demo-connection">Tenant administrator approval and customer-selected permissions.</dd></div>
+            <div><dt>Known gap</dt><dd id="demo-gap">Some automated activity may not appear as a conventional meeting participant.</dd></div>
+          </dl>
+        </div>
+      </div>
+    </section>
+
+    <section class="light">
+      <div class="container">
+        <div class="section-head">
+          <div><p class="eyebrow">Next step</p><h2>Test the workflow in meetings you approve.</h2></div>
+          <p>The interactive demo explains the governance model. A real 48-hour Shadow Audit shows what the connected platform exposes in your agreed evaluation scope.</p>
+        </div>
+        <div class="page-actions"><a class="button dark" href="shadow-audit.html">Review and start the Shadow Audit</a><a class="button dark" href="NotetakerGuard_Shadow_Audit_Sample_Report.pdf">Open the sample report</a></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div><div class="footer-brand"><img src="images/The Flow Partners Logo.png" alt="" width="36" height="36"><span>The Flow Partners Incorporated</span></div><p class="copyright">&copy; 2026 by The Flow Partners Incorporated. Illustrative product information is not legal or compliance advice.</p></div>
+      <div class="footer-links"><a href="index.html">Home</a><a href="product.html">Product</a><a href="shadow-audit.html">48-hour audit</a><a href="contact.html#technical-overview">Technical overview</a></div>
+    </div>
+  </footer>
+  <script src="demo.js"></script>
+</body>
+</html>
